@@ -1,6 +1,6 @@
 # 🌦️ Weather Data Pipeline
 
-A data pipeline project to **extract and load (EL)** weather data from an external API into a local SQLite database.
+A data pipeline project to **extract and load (EL)** weather data from **OpenWeatherMap API** to a local SQLite database.
 The extraction runs automatically **every hour**, ensuring the database is always up to date.  
 The project also includes logging, configuration management, and a simple dashboard for data visualization.
 
