@@ -1,3 +1,7 @@
+# TODO: Refatoração de código -> Remoção do schema do SQLite
+# TODO: A inserção dos dados no DW deve ser feita de forma dinâmica
+
+
 """
 Module for loading and inserting weather data into a SQLite database.
 """
@@ -5,7 +9,6 @@ Module for loading and inserting weather data into a SQLite database.
 import os
 import csv
 import sqlite3
-from datetime import datetime
 from dataclasses import dataclass, field
 from contextlib import contextmanager
 from logging_config import logger
@@ -148,7 +151,7 @@ class LoadData:
             logger.error(f'Error while inserting data to data base: {e}')
             raise
     
-    def get_latest_records(self, limit=10):
+    def get_latest_records(self, limit=1000):
         """
         Retrieve the latest weather records from the database.
 
@@ -187,7 +190,7 @@ class LoadData:
                              Defaults to 'weather_backup.csv'.
         """
         try:
-            records = self.get_latest_records(1000)
+            records = self.get_latest_records(4)
             os.makedirs(BACKUP_DIR, exist_ok=True)
             file_path = os.path.join(BACKUP_DIR, file_name)
 

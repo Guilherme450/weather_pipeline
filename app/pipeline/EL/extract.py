@@ -11,7 +11,7 @@ from logging_config import logger
 # load_dotenv(dotenv_path='api_key.env')  # Initialize API key environment variable
 # API_KEY = os.getenv('API_KEY')
 
-def validate_api_key(api_key) -> bool:
+def validate_api_key(api_key: str) -> bool:
     """
     Validate the API key.
 
@@ -26,7 +26,7 @@ def validate_api_key(api_key) -> bool:
         return False
     return True
 
-def extract_weather_data(api_url: str, api_key: str, city: str, params=None):
+def extract_weather_data(api_url: str, api_key: str, params=None) -> dict[str, any] | Exception:
     """
     Extract weather data from the API for the specified city.
 
