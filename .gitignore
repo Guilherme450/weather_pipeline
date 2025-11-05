@@ -2,5 +2,6 @@ venv/
 app/pipeline/log/app.log
 app/pipeline/config/api_key.env
 app/db/weather_data.db
+app/db_schema
 __pycache__/
 *.pyc
