@@ -1,82 +1,124 @@
 # 🌦️ Weather Data Pipeline
 
-A data pipeline project to **extract and load (EL)** weather data from **OpenWeatherMap API** to a local SQLite database.
-The extraction runs automatically **every hour**, ensuring the database is always up to date.  
-The project also includes logging, configuration management, and a simple dashboard for data visualization.
+This project is a data pipeline that extracts weather data from the OpenWeatherMap API and loads it into a local SQLite database. The pipeline runs automatically every hour, ensuring the data is always up to date. The project also includes logging, configuration management, and a simple dashboard for data visualization.
+
+## 📋 Table of Contents
+
+- [Features](#-features)
+- [Technologies](#-technologies)
+- [Project Structure](#-project-structure)
+- [Installation](#-installation)
+- [Usage](#-usage)
+- [Logs & Backups](#-logs--backups)
+- [Future Improvements](#-future-improvements)
 
 ---
 
 ## 📌 Features
-- 🔑 Secure API key management using `.env` files  
-- 📥 Extract weather data from an external API **every hour**    
-- 💾 Load data into a local SQLite database (`weather_data.db`)  
-- 📝 Logging system for monitoring pipeline execution  
-- 📊 Simple dashboard for viewing weather data  
+
+- 🔑 **Secure API Key Management**: Uses `.env` files to keep API keys safe and secure.
+- **Hourly Data Extraction**: Automatically extracts weather data from the OpenWeatherMap API every hour.
+- 💾 **SQLite Database Storage**: Loads the extracted data into a local SQLite database (`weather_data.db`).
+- 📝 **Logging System**: Keeps a detailed log of the pipeline's execution for easy monitoring.
+- 📊 **Simple Data Dashboard**: Includes a simple and intuitive dashboard for viewing the collected weather data.
+
+---
+
+## 🚀 Technologies
+
+- 🐍 **Python**: The core language for the project.
+- 🐘 **SQLAlchemy**: For database interaction and management.
+- 💨 **Alembic**: For database schema migrations.
+- 📝 **dotenv**: For managing environment variables.
 
 ---
 
 ## 📂 Project Structure
+
 ```shell
-  $ tree
-  WEATHER_PIPELINE/
+.
+├── README.md
 ├── app/
-│ ├── backup/ # Backup files
-│ ├── dashboard/ # Visualization/dashboard code
+│ ├── backup/
+│ ├── dashboard/
 │ │ └── main.py
-│ ├── db/ # Database
+│ ├── db/
 │ │ └── weather_data.db
-│ └── pipeline/ # Pipeline scripts
-│ ├── pycache/ # Python cache (ignored in git)
-│ ├── config/ # Configuration files
+│ └── pipeline/
+│ ├── config/
 │ │ └── api_key.env
-│ ├── log/ # Log files
+│ ├── log/
 │ │ └── app.log
-│ ├── extract.py # Extraction logic
-│ ├── load.py # Load logic
-│ ├── logging_config.py # Logging configuration
-│ └── pipeline.py # Main pipeline execution
+│ ├── extract.py
+│ ├── load.py
+│ ├── logging_config.py
+│ └── pipeline.py
 │
-├── requirements.txt # Python dependencies
+├── requirements.txt
 ├── .gitignore
 └── README.md
 ```
 
+---
+
 ## ⚙️ Installation
-1. Clone this repository:
-    ```bash
-    git clone https://github.com/Guilherme450/weather_pipeline.git
-    cd weather_pipeline
 
-2. Create and activate a virtual environment:
-    ```bash
-    python -m venv venv
-    source venv/bin/activate   # On Linux/Mac
-    venv\Scripts\activate      # On Windows
+1. **Clone the repository:**
 
-3. Install dependencies:
-    ```bash
-    pip install -r requirements.txt
+   ```bash
+   git clone https://github.com/Guilherme450/weather_pipeline.git
+   cd weather_pipeline
+   ```
 
-4. Create a .env file inside `app/pipeline/config/`:
-    ```bash
-    API_KEY=your_api_key_here
+2. **Create and activate a virtual environment:**
+
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # On Linux/Mac
+   venv\Scripts\activate  # On Windows
+   ```
+
+3. **Install the dependencies:**
+
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. **Set up your API key:**
+
+   Create a `.env` file in the `app/pipeline/config/` directory and add your OpenWeatherMap API key:
+
+   ```
+   API_KEY=your_api_key_here
+   ```
+
+---
 
 ## ▶️ Usage
-1. Run the pipeline
-    ```bash
-    python app/pipeline/pipeline.py
 
-2. Run the dashboard:
-    ```bash
-    python app/dashboard/main.py
+1. **Run the pipeline:**
+
+   ```bash
+   python app/pipeline/pipeline.py
+   ```
+
+2. **Run the dashboard:**
+
+   ```bash
+   python app/dashboard/main.py
+   ```
+
+---
 
 ## 🗂️ Logs & Backups
-- Logs are stored in `app/pipeline/log/app.log`
-- Database backups are saved in `app/backup/`
+
+- **Logs**: The pipeline's execution logs are stored in `app/pipeline/log/app.log`.
+- **Backups**: Database backups are saved in the `app/backup/` directory.
+
+---
 
 ## 🚀 Future Improvements
-- Add cloud storage support (S3, GCP, Azure)
 
-- Automate pipeline scheduling (Airflow/Prefect)
-
-- Enhance dashboard with Plotly or Dash
+- **Cloud Storage**: Add support for cloud storage services like AWS S3, Google Cloud Storage, or Azure Blob Storage.
+- **Workflow Automation**: Automate the pipeline scheduling using a tool like Airflow or Prefect.
+- **Enhanced Dashboard**: Improve the data dashboard with more advanced visualization libraries like Plotly or Dash.
